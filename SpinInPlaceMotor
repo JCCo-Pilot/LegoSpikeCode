@@ -1,0 +1,25 @@
+import motor
+import color_sensor
+import color_matrix
+import force_sensor
+import distance_sensor
+import runloop
+from hub import port, light_matrix
+
+# Run two motors on ports A and B for 360 degrees at 720 degrees per second.
+# The motors run at the same time.
+#motor.run_for_degrees(port.A, 3000, 720)
+#motor.run_for_degrees(port.B, -3000, 720)
+print(force_sensor.pressed(port.A))
+#motor.run_for_degrees(port.C, 3000, 720)
+#motor.run_for_degrees(port.B, 3000, 720)
+light_matrix.write('Skibid Toilet')
+b  = force_sensor.pressed(port.A)
+i = 50;
+while True:
+    if (b):
+        motor.run_for_degrees(port.C, 3000, 1050)
+        motor.run_for_degrees(port.B, -3000, 1050)
+        #motor.run_for_degrees(port.F,i,720)
+        light_matrix.write('Skibid Toilet')
+    b= force_sensor.pressed(port.A)
